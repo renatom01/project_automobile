@@ -6,3 +6,11 @@
 automobile:
   type: pandas.CSVDataSet
   filepath: data/01_raw/automobile.csv
+
+encoded_automobile:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pp_automobile.csv
+
+scaled_automobile:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/sc_automobile.csv
