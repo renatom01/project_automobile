@@ -1,8 +1,9 @@
 """Project pipelines."""
 from typing import Dict
 
-from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
+
+from automobile_kedro.pipelines import data_processing as dpp
 
 
 def register_pipelines() -> Dict[str, Pipeline]:
@@ -11,6 +12,9 @@ def register_pipelines() -> Dict[str, Pipeline]:
     Returns:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
-    pipelines = find_pipelines()
-    pipelines["__default__"] = sum(pipelines.values())
-    return pipelines
+    pre_processing_pipeline = dpp.create_pipeline()
+
+    return {
+        "dpp":pre_processing_pipeline,
+        "__default__": pre_processing_pipeline 
+    }
